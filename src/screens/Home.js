@@ -2,13 +2,17 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { ImageBackground } from '@gluestack-ui/themed'
 import { StyleSheet } from 'react-native'
+import MyDrawer from '../components/navigations/MyDrawer'
+import MyTabs from '../components/navigations/Mytabs'
 
 export default function Home() {
     const imgPath = '../assests/bg1.jpg'
 
   return (
     <ImageBackground source={require(imgPath)} resizeMode="cover" style={[styles.image, styles.main]}>
-        <Text>Home</Text>
+        <MyDrawer></MyDrawer>
+        {/* <MyTabs/> */}
+        
     </ImageBackground>
 
   )

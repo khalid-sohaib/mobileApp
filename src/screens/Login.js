@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native'
 import React from 'react'
-import { CheckIcon, CheckboxIcon, CheckboxIndicator, CheckboxLabel, Divider, Heading, ImageBackground, Text, VStack } from '@gluestack-ui/themed'
-import FormField from '../../components/formField/FormField'
+import {  ImageBackground, VStack } from '@gluestack-ui/themed'
 import { Checkbox } from '@gluestack-ui/themed'
 import { Button } from '@gluestack-ui/themed'
 import { ButtonText } from '@gluestack-ui/themed'
-export default function Login() {
+import FormField from '../components/formField/FormField'
+
+export default function Login({navigation}) {
+
     const imgPath = '../assests/bgImage.jpg'
 
   return (
@@ -22,11 +24,11 @@ export default function Login() {
                    <Text style={styles.text}>I accept the terms & conditions</Text>
                </Checkbox> */}
 
-                <Button variant="solid" size="xl" style={styles.button} onPress={ () => console.log("hello world")}>
+                <Button variant="solid" size="xl" style={styles.button} onPress={ () => navigation.navigate('Home')}>
                     <ButtonText >Login</ButtonText>
                 </Button>
                 
-                <Button variant="link" size="md"  onPress={ () => console.log("Register Screen")}>
+                <Button variant="link" size="md"  onPress={ () => navigation.navigate('Register')}>
                     <ButtonText >Create a new account</ButtonText>
                 </Button>
         </VStack >  
