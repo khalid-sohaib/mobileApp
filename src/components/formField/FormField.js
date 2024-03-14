@@ -12,71 +12,58 @@ import {
   InputField,
   VStack,
 } from "@gluestack-ui/themed";
+import MyTextInput from "./TextInput";
 // import InputField from '../InputField';
-import { WarningOutlineIcon } from "native-base";
 // import { FormControlError } from '@gluestack-ui/themed';
-import { Input } from "@gluestack-ui/themed";
 
 export default function FormField({
   isRequired,
   label,
   placeholder,
-  minLength,
+  errors,
+  secureTextEntry,
+  keyboardType,
+  onChangeText,
+  ...props
 }) {
   return (
-    // <FormControl style={styles.form} isRequired={isRequired}>
-    //     <VStack mx="4" space={0}>
-    //     <FormControl.Label >
-    //         <Text style={styles.label}>{label}</Text>
-    //     </FormControl.Label>
-    //     <InputField placeholder={placeholder}/>
-    //     {/* <FormControl.HelperText>
-    //         <Text style={styles.text}> Must be atleast {minLength} characters.</Text>
-    //     </FormControl.HelperText> */}
-    //     <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-    //         Atleast {minLength} characters are required.
-    //     </FormControl.ErrorMessage>
-    //     </VStack>
-    // </FormControl>
-
     <FormControl style={styles.form} isRequired={isRequired}>
-        <VStack mx="0" space={"xs"}>
-            
+      <VStack mx="0" space={"xs"}>
+        <FormControlLabel>
+          <FormControlLabelText style={styles.label}>
+            {label}
+          </FormControlLabelText>
+        </FormControlLabel>
+        <MyTextInput
+          type="text"
+          placeholder={placeholder}
+          secureTextEntry={secureTextEntry ? true : false}
+          keyboardType={keyboardType}
+          onChangeText={onChangeText}
+        />
+        {errors && <Text style={{ color: "red" }}>{errors}</Text>}
 
-      <FormControlLabel>
-        <FormControlLabelText style={styles.label}>
-          {label}
-        </FormControlLabelText>
-      </FormControlLabel>
-
-      <Input variant="underlined">
-        <InputField  type="text" placeholder={placeholder} />
-      </Input>
-
-      {/* <FormControlHelper>
+        {/* <FormControlHelper>
         <FormControlHelperText style={styles.text}>
           {" "}
           Must be atleast {minLength} characters.
         </FormControlHelperText>
       </FormControlHelper> */}
 
-      <FormControlError>
-        <FormControlErrorIcon />
-        <FormControlErrorText>
-          Atleast {minLength} characters are required.
-        </FormControlErrorText>
-      </FormControlError>
-
+        <FormControlError style={{ backgroundColor: "red" }}>
+          <FormControlErrorIcon />
+          <FormControlErrorText style={{ color: "red" }}>
+            {errors}
+          </FormControlErrorText>
+        </FormControlError>
       </VStack>
-
     </FormControl>
   );
 }
 
 const styles = StyleSheet.create({
   form: {
-    width:'100%',
-    
+    width: "100%",
   },
 
   text: {
