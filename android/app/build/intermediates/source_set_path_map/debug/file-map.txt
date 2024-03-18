@@ -40,8 +40,9 @@ com.firstapp-debug-38 C:\developer\Mobile\mobileApp\android\app\src\debug\res
 com.firstapp-main-39 C:\developer\Mobile\mobileApp\android\app\src\main\res
 com.firstapp-packaged_res-40 C:\developer\Mobile\mobileApp\node_modules\lottie-react-native\android\build\intermediates\packaged_res\debug
 com.firstapp-packaged_res-41 C:\developer\Mobile\mobileApp\node_modules\react-native-gesture-handler\android\build\intermediates\packaged_res\debug
-com.firstapp-packaged_res-42 C:\developer\Mobile\mobileApp\node_modules\react-native-reanimated\android\build\intermediates\packaged_res\debug
-com.firstapp-packaged_res-43 C:\developer\Mobile\mobileApp\node_modules\react-native-safe-area-context\android\build\intermediates\packaged_res\debug
-com.firstapp-packaged_res-44 C:\developer\Mobile\mobileApp\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
-com.firstapp-packaged_res-45 C:\developer\Mobile\mobileApp\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
-com.firstapp-packaged_res-46 C:\developer\Mobile\mobileApp\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-42 C:\developer\Mobile\mobileApp\node_modules\react-native-image-picker\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-43 C:\developer\Mobile\mobileApp\node_modules\react-native-reanimated\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-44 C:\developer\Mobile\mobileApp\node_modules\react-native-safe-area-context\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-45 C:\developer\Mobile\mobileApp\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-46 C:\developer\Mobile\mobileApp\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-47 C:\developer\Mobile\mobileApp\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug

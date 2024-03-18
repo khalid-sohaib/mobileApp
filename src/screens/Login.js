@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, ToastAndroid } from "react-native";
 import React from "react";
 import { ImageBackground, Text, VStack } from "@gluestack-ui/themed";
 import { Button } from "@gluestack-ui/themed";
@@ -6,6 +6,7 @@ import { ButtonText } from "@gluestack-ui/themed";
 import FormField from "../components/formField/FormField";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import AuthContext from "../context/AuthContext";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,9 +18,15 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Login({ navigation }) {
+  const {toggleLogin} =React.useContext(AuthContext);
+
   const handleLogin = (values) => {
     // console.warn(values);
-    navigation.navigate("Home");
+    toggleLogin();
+    // navigation.navigate("Home");
+
+    ToastAndroid.show('Logged in successfully', ToastAndroid.SHORT);
+
   };
   const imgPath = "../assests/bgImage.jpg";
 

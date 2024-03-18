@@ -1,128 +1,145 @@
-import { HStack } from '@gluestack-ui/themed'
-import { Box, Button, ButtonText, Card, Heading, Image, Text, VStack } from '@gluestack-ui/themed'
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-
-const styles = StyleSheet.create ({
-    card : {
-        // borderRadius: '$lg',
-    },
-    image : {
-    
-    },
-    text : {
-
-    },
-    button : {
-
-    },
-
-})
-
-export default function ProductCard({imgUrl, title, price, category}) {
-  return (
-    <View>
-        <Card borderRadius="$lg"  mb="$3" mt={3} p='$0'>
-
-            <Image
-                mb="$4"
-                h={240}
-                width="$full"
-                overflow='hidden'
-                resizeMode='contain'
-                borderTopLeftRadius="$md"
-                borderTopRightRadius="$md"
-                source={{
-                uri: imgUrl
-                }}
-                alt={'image-label'}
-            />
-           
-            <Box px={'$4'} pb={'$4'}>
-                <Text
-                fontSize="$sm"
-                fontStyle="normal"
-                fontFamily="$heading"
-                fontWeight="$normal"
-                lineHeight="$sm"
-                mb="$2"
-                sx={{
-                color: '$textLight700',
-                _dark: {
-                    color: '$textDark200',
-                },
-                }}
-            >
-                {category}
-                </Text>
-                <HStack justifyContent='space-between'>
-            
-                    <VStack >
+import React, { useState } from 'react';
+import { View, TouchableWithoutFeedback } from 'react-native';
+import { Modal, ModalBackdrop, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalCloseButton } from '@gluestack-ui/themed';
+import { Card, Image, Box, Heading, Text, HStack, VStack, Button, ButtonText } from '@gluestack-ui/themed';
+import Icon from "react-native-vector-icons/MaterialIcons";
+import ProductDetailModal from './ProductDetailModal';
 
 
-                        <Heading size="md" fontFamily="$heading" mb="$2">
-                        {title}
-                        </Heading>
-                        <Heading size="md" fontFamily="$body" color='#47C6BE'  >
-                        {price}
-                        </Heading>
+export default function ProductCard({ imgUrl, title, price, category, description}) {
+    const [showModal, setShowModal] = useState(false);
+    const ref = React.useRef(null);
+
+    return (
+        <View>
+            <TouchableWithoutFeedback onPress={() => setShowModal(true)}>
+                <Card borderRadius="$lg" mb="$3" mt={3} p='$0'>
+                    <Image
+                        mb="$4"
+                        h={240}
+                        width="$full"
+                        overflow='hidden'
+                        resizeMode='contain'
+                        borderTopLeftRadius="$md"
+                        borderTopRightRadius="$md"
                         
-                    </VStack>
-{/* 
-                    <VStack >
-                        <Box
-                            flexDirection="column"
+                        source={{ uri: imgUrl }}
+                        alt={'image-label'}
+                    />
+                    <Box px={'$4'} pb={'$4'}>
+                        <Text
+                            fontSize="$sm"
+                            fontStyle="normal"
+                            fontFamily="$heading"
+                            fontWeight="$normal"
+                            lineHeight="$sm"
+                            mb="$2"
                             sx={{
-                            '@sm': {
-                                flexDirection: 'row',
-                            },
+                                color: '$textLight700',
+                                _dark: {
+                                    color: '$textDark200',
+                                },
                             }}
                         >
-                            <Button
-                            px="$4"
-                            py="$2"
+                            {category}
+                        </Text>
+                        <HStack justifyContent='space-between'>
+                            <VStack>
+                                <Heading size="md" fontFamily="$heading" mb="$2">
+                                    {title}
+                                </Heading>
+                                <Heading size="md" fontFamily="$body" color='#47C6BE'>
+                                    {price}
+                                </Heading>
+                            </VStack>
+                        </HStack>
+                    </Box>
+                </Card>
+            </TouchableWithoutFeedback>
+            
+            {/* <ProductDetailModal showModal={showModal} setShowModal={setShowModal} imgUrl={imgUrl} category={category} title={title} price={price} description={description} /> */}
+            <Modal
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+                finalFocusRef={ref}
+            >
+                <ModalBackdrop />
+                <ModalContent>
+                    <ModalHeader>
+                        <Heading size='lg'>Product Details</Heading>
+                        <ModalCloseButton>
+                            <Icon
+                                name={"close"}
+                                size={24}
+                                color="#FA5057"
+                                style={{ marginRight: 16 }}
+                                onPress={() => setShowModal(false)}
+                            />
+                        </ModalCloseButton>
+                    </ModalHeader>
+                    <ModalBody>
+                    <Image
+                        mb="$4"
+                        h={240}
+                        width="$full"
+                        overflow='hidden'
+                        resizeMode='contain'
+                        borderTopLeftRadius="$md"
+                        borderTopRightRadius="$md"
+                        source={{ uri: imgUrl }}
+                        alt={'image-label'}
+                    />
+                    <Box px={'$4'} pb={'$4'}>
+                        <Text
+                            fontSize="$sm"
+                            fontStyle="normal"
                             fontFamily="$heading"
-                            mr="$0"
-                            mb="$3"
+                            fontWeight="$normal"
+                            lineHeight="$sm"
+                            mb="$2"
                             sx={{
-                                '@sm': {
-                                mr: '$3',
-                                mb: '$0',
-                                flex: 1,
+                                color: '$textLight700',
+                                _dark: {
+                                    color: '$textDark200',
                                 },
                             }}
-                            >
-                            <ButtonText size="sm">Add to cart</ButtonText>
-                            </Button>
-                            <Button
-                            px="$4"
-                            py="$2"
+                        >
+                            {category}
+                        </Text>
+                        <HStack justifyContent='space-between'>
+                            <VStack>
+                                <Heading size="md" fontFamily="$heading" mb="$2">
+                                    {title}
+                                </Heading>
+                                <Heading size="md" fontFamily="$body" color='#47C6BE'>
+                                    {price}
+                                </Heading>
+                            </VStack>
+                        </HStack>
+                    </Box>
+                    </ModalBody>
+                    
+                    <ModalFooter>
+                        <Button
                             variant="outline"
-                            fontFamily="$heading"
-                            borderColor="$borderLight300"
-                            $dark-borderColor="$backgroundDark600"
-                            sx={{
-                                '@sm': {
-                                flex: 1,
-                                },
-                            }}
-                            >
-                            <ButtonText
-                                size="sm"
-                                color="$textLight600"
-                                $dark-color="$textDark400"
-                            >
-                                Wishlist
-                            </ButtonText>
-                            </Button>
-                        </Box>    
-                    </VStack> */}
-
-                </HStack>
-            </Box>
-        
-        
-        </Card>
-    </View>
-  )
+                            size="sm"
+                            action="secondary"
+                            mr="$3"
+                            onPress={() => setShowModal(false)}
+                        >
+                            <ButtonText>Cancel</ButtonText>
+                        </Button>
+                        <Button
+                            size="sm"
+                            action="positive"
+                            borderWidth='$0'
+                            onPress={() => setShowModal(false)}
+                        >
+                            <ButtonText>Explore</ButtonText>
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </View>
+    );
 }

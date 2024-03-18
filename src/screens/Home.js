@@ -11,12 +11,15 @@ import { Heading } from "@gluestack-ui/themed";
 import { ScrollView } from "@gluestack-ui/themed";
 import ProductCard from "../components/ProductCard";
 import { StatusBar } from "react-native";
-import { Text } from "@gluestack-ui/themed";
 import FilterTab from "../components/filter/FilterTab";
 import CustomCard from "../components/CustomCard";
 import { useQuery } from "react-query";
 import { useFilter } from "../context/FilterContext";
 import LottieView from "lottie-react-native";
+import ProductDetailModal from "../components/ProductDetailModal";
+import { Text } from "@gluestack-ui/themed";
+import { Progress } from "@gluestack-ui/themed";
+import { ProgressFilledTrack } from "@gluestack-ui/themed";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -40,7 +43,7 @@ export default function Home() {
       }
 
       const data = await res.json();
-      console.warn(data);
+      // console.warn(data);
       return data;
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -64,90 +67,94 @@ export default function Home() {
   products?.filter((p) => p.category == filter) || [];
   const imgPath = "../assests/bg2.jpg";
   const items = ["Clothing", "Cameras", "Electronics", "Books"];
-  const productsArr = [
-    {
-      category: "Fashion Clothing",
-      title: "Cotton Kurta",
-      price: "$12",
-      image:
-        'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
-    },
-    {
-      category: "Fashion Clothing",
-      title: "Cotton Kurta",
-      price: "$12",
-      image:
-        'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
-    },
-    ,
-    {
-      category: "Fashion Clothing",
-      title: "Cotton Kurta",
-      price: "$12",
-      image:
-        'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
-    },
-    {
-      category: "Fashion Clothing",
-      title: "Cotton Kurta",
-      price: "$12",
-      image:
-        'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
-    },
-  ];
+  // const productsArr = [
+  //   {
+  //     category: "Fashion Clothing",
+  //     title: "Cotton Kurta",
+  //     price: "$12",
+  //     image:
+  //       'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
+  //   },
+  //   {
+  //     category: "Fashion Clothing",
+  //     title: "Cotton Kurta",
+  //     price: "$12",
+  //     image:
+  //       'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
+  //   },
+  //   ,
+  //   {
+  //     category: "Fashion Clothing",
+  //     title: "Cotton Kurta",
+  //     price: "$12",
+  //     image:
+  //       'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
+  //   },
+  //   {
+  //     category: "Fashion Clothing",
+  //     title: "Cotton Kurta",
+  //     price: "$12",
+  //     image:
+  //       'https://images.unsplash.com/photo-1595231712325-9fedecef7575?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"',
+  //   },
+  // ];
 
   return (
     // <ImageBackground source={require(imgPath)} resizeMode="cover" style={[styles.image, styles.main]}>
     <Box style={[styles.image, styles.main]}>
-      <ScrollView>
-        <HStack>
-          <FilterTab items={categories || items} />
-        </HStack>
-        {productsLoading && (
-        <LottieView
-          source={require('.././assests/loading-animation.json')} 
-          autoPlay
-          loop
-        />
-      )}
-
-        <VStack style={{ marginBottom: 80 }}>
+      {/* <ProductDetailModal/> */}
+      {productsLoading && (
+            // <Text>Products are Loading trying animationsssssssssssss</Text>
+          
+            <Progress value={40} w={'100%'}  size="lg"  >
+              <ProgressFilledTrack />
+            </Progress>
         
-          {products?.map((p, index) => (
-            <ProductCard
-              key={index}
-              imgUrl={p.image}
-              title={p.title}
-              category={p.category}
-              price={p.price}
-            />
-          ))}
-
-          <HStack
-            space="lg"
-            mb={"$3"}
-            style={{ justifyContent: "space-around", alignItems: "center" }}
-          >
-            <ScrollView w="$90" horizontal>
-              <CustomCard />
-              <CustomCard />
-              <CustomCard />
-              <CustomCard />
-            </ScrollView>
+        )} 
+        <ScrollView>
+          <HStack>
+            <FilterTab items={categories || items} />
           </HStack>
-          <Box
-            style={{
-              backgroundColor: "#FB5159",
-              borderRadius: 20,
-              justifyContent: "space-around",
-              alignItems: "center",
-              padding: 20,
-            }}
-          >
-            <Icon name="check-circle" size={60} color="green" />
-          </Box>
-        </VStack>
-      </ScrollView>
+         
+
+          <VStack style={{ marginBottom: 80 }}>
+          
+            {products?.map((p, index) => (
+              <ProductCard
+                key={index}
+                imgUrl={p.image}
+                title={p.title}
+                category={p.category}
+                price={p.price}
+                description={p.description}
+              />
+            ))}
+
+            <HStack
+              space="lg"
+              mb={"$3"}
+              style={{ justifyContent: "space-around", alignItems: "center" }}
+            >
+              <ScrollView w="$90" horizontal>
+                <CustomCard />
+                <CustomCard />
+                <CustomCard />
+                <CustomCard />
+              </ScrollView>
+            </HStack>
+            <Box
+              style={{
+                backgroundColor: "#FB5159",
+                borderRadius: 20,
+                justifyContent: "space-around",
+                alignItems: "center",
+                padding: 20,
+              }}
+            >
+              <Icon name="check-circle" size={60} color="green" />
+            </Box>
+          </VStack>
+        </ScrollView>
     </Box>
     //   </ImageBackground>
   );

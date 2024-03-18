@@ -14,6 +14,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 const Tab = createBottomTabNavigator();
 
 function NotificationsScreen({ navigation }) {
+  
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>NotificationsScreen</Text>
@@ -58,7 +59,7 @@ export default function MyTabs({navigation}) {
         
         }}
       />
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{
+      <Tab.Screen name="AddNew" component={AddScreen} options={{
         
 
           tabBarIcon: ({ color }) => (
@@ -73,8 +74,8 @@ export default function MyTabs({navigation}) {
         
         }}
       />
-      <Tab.Screen name="AddNew" component={AddScreen} options={{
-          
+     
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{
           tabBarIcon: ({ color, focused }) => (
             <FontAwesome6 name="user" color={focused ? '#FA5057' : color } size={26} />
           ),
