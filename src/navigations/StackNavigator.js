@@ -7,6 +7,7 @@ import { StyleSheet } from "react-native";
 import MyDrawer from "./MyDrawer";
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
+import MyTabs from "./Mytabs";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +15,7 @@ export default function StackNavigator() {
   const {isLoggedIn} = useContext(AuthContext);
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Drawer"
       headerMode="none"
       screenOptions={{ headerShown: false }}
     >
@@ -24,11 +25,14 @@ export default function StackNavigator() {
           <Stack.Screen name="Register" component={Register} />
         </>
       ) : (
-        <Stack.Screen
-          name="Home"
-          component={MyDrawer}
-          options={{ headerShown: false }}
-        />
+        <>
+          <Stack.Screen
+            name="Drawer"
+            component={MyDrawer}
+            options={{ headerShown: false }}
+          />
+          
+        </>
       )}
     </Stack.Navigator>
   );

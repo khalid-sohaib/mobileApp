@@ -31,7 +31,7 @@ export default function Register({ navigation }) {
 
   const handleRegister = (values) => {
     // console.warn(values);
-    navigation.navigate("Home");
+    navigation.navigate("Login");
   };
   return (
     <ImageBackground

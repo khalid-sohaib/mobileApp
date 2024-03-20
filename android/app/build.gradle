@@ -76,6 +76,7 @@ android {
 
     namespace "com.firstapp"
     defaultConfig {
+        missingDimensionStrategy 'react-native-camera', 'general' 
         applicationId "com.firstapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -102,7 +103,7 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
-}
+} 
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin

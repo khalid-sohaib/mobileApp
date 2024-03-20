@@ -13,8 +13,12 @@ import java.util.ArrayList;
 
 // lottie-react-native
 import com.airbnb.android.react.lottie.LottiePackage;
+// react-native-camera
+import org.reactnative.camera.RNCameraPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.RNGestureHandlerPackage;
+// react-native-get-location
+import com.github.douglasjunior.reactNativeGetLocation.ReactNativeGetLocationPackage;
 // react-native-image-picker
 import com.imagepicker.ImagePickerPackage;
 // react-native-reanimated
@@ -73,7 +77,9 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
       new LottiePackage(),
+      new RNCameraPackage(),
       new RNGestureHandlerPackage(),
+      new ReactNativeGetLocationPackage(),
       new ImagePickerPackage(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),

@@ -10,27 +10,11 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { Box } from '@gluestack-ui/themed';
 import AddScreen from '../screens/AddScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import MyDrawer from './MyDrawer';
+import HomeContainer from '../containers/HomeContainer';
 
 const Tab = createBottomTabNavigator();
 
-function NotificationsScreen({ navigation }) {
-  
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>NotificationsScreen</Text>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
-
-function SettingsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>SettingsScreen</Text>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
 
 export default function MyTabs({navigation}) {
   return (
@@ -51,7 +35,8 @@ export default function MyTabs({navigation}) {
         tabBarLabelStyle:{display:'none'},
         headerShown:false
       }}>
-      <Tab.Screen name="Home" component={Home} options={{
+      
+      <Tab.Screen name="HomeScreen" component={Home} options={{
           // tabBarLabel: 'Home',
           tabBarIcon: ({ color, focused }) => (
             <Icon name="home" size={30} color={focused ? '#FA5057' : color } />

@@ -3,23 +3,28 @@ import * as React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import MyTabs from "./Mytabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import AddScreen from "../screens/AddScreen";
 import AuthContext from "../context/AuthContext";
 import { ToastAndroid } from "react-native";
 import About from "../screens/About";
+import ScanScreen from "../screens/ScanScreen";
+import CustomDrawerContent from "./CustomDrawerContent";
 
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer({ navigation }) {
+  const { toggleLogin } = React.useContext(AuthContext);
 
-  const {toggleLogin} =React.useContext(AuthContext);
-  
   const Logout = () => {
     toggleLogin();
-    ToastAndroid.show('Logged out successfully', ToastAndroid.SHORT);
+    ToastAndroid.show("Logged out successfully", ToastAndroid.SHORT);
   };
+
   return (
     <Drawer.Navigator
+      drawerStyle={{
+        backgroundColor: "#F56E13",
+        width: 320,
+      }}
       screenOptions={{
         headerStyle: {
           // backgroundColor: '#F56E13',
@@ -31,6 +36,7 @@ export default function MyDrawer({ navigation }) {
         headerTitleStyle: {
           fontWeight: "bold",
         },
+
         headerRight: () => (
           <Icon
             name={"logout"}
@@ -42,6 +48,7 @@ export default function MyDrawer({ navigation }) {
           />
         ),
       }}
+      // drawerContent={(props) => <CustomDrawerContent  />}
     >
       <Drawer.Screen
         name="Home"
@@ -51,7 +58,7 @@ export default function MyDrawer({ navigation }) {
         }}
       />
       <Drawer.Screen name="About" component={About} />
+      <Drawer.Screen name="Scan" component={ScanScreen} />
     </Drawer.Navigator>
   );
-  
 }

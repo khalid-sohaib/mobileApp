@@ -46,10 +46,10 @@ export default function ProductCard({ imgUrl, title, price, category, descriptio
                         <HStack justifyContent='space-between'>
                             <VStack>
                                 <Heading size="md" fontFamily="$heading" mb="$2">
-                                    {title}
+                                    {title.split(' ').slice(0,3).join(' ')}
                                 </Heading>
                                 <Heading size="md" fontFamily="$body" color='#47C6BE'>
-                                    {price}
+                                    $ {price}
                                 </Heading>
                             </VStack>
                         </HStack>
@@ -57,8 +57,8 @@ export default function ProductCard({ imgUrl, title, price, category, descriptio
                 </Card>
             </TouchableWithoutFeedback>
             
-            {/* <ProductDetailModal showModal={showModal} setShowModal={setShowModal} imgUrl={imgUrl} category={category} title={title} price={price} description={description} /> */}
-            <Modal
+            <ProductDetailModal showModal={showModal} setShowModal={setShowModal} imgUrl={imgUrl} category={category} title={title} price={price} description={description} />
+            {/* <Modal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 finalFocusRef={ref}
@@ -139,7 +139,7 @@ export default function ProductCard({ imgUrl, title, price, category, descriptio
                         </Button>
                     </ModalFooter>
                 </ModalContent>
-            </Modal>
+            </Modal> */}
         </View>
     );
 }

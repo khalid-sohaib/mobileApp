@@ -12,9 +12,9 @@ export default function FilterTab({ items }) {
 
   const handlePress = (index, e) => {
     setFocusedIndex(index);
-    setFilter(e);
+    setFilter(items[index]);
   };
-
+  
   return (
     <ScrollView horizontal marginVertical={8} >
       {items.map((e, index) => (

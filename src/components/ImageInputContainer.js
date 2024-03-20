@@ -1,11 +1,13 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { Box, Image, ModalBackdrop, ModalCloseButton, ModalContent, ModalFooter, ModalHeader } from '@gluestack-ui/themed'
+import { Box, ButtonIcon, Heading, Image, ModalBackdrop, ModalCloseButton, ModalContent, ModalFooter, ModalHeader } from '@gluestack-ui/themed'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import { Modal } from '@gluestack-ui/themed';
 import { ModalBody } from '@gluestack-ui/themed';
-
+import { HStack } from '@gluestack-ui/themed';
+import { Button } from '@gluestack-ui/themed';
+import FontAwesome6Icon from 'react-native-vector-icons/FontAwesome6';
 
 
 export default function ImageInputContainer({imgUrl, onChangeImage}) {
@@ -23,6 +25,7 @@ export default function ImageInputContainer({imgUrl, onChangeImage}) {
 
     
     const handleCamera = async ()=>{
+      setShowModal(false)
       try {
         const result = await launchCamera(cameraType='back');
         console.log(result.assets[0].uri);
@@ -34,6 +37,7 @@ export default function ImageInputContainer({imgUrl, onChangeImage}) {
     }
 
     const handleGallery = async () => {
+      setShowModal(false)
       try {
         const result = await launchImageLibrary();
         console.log(result.assets[0].uri);
@@ -53,7 +57,7 @@ export default function ImageInputContainer({imgUrl, onChangeImage}) {
                 <Icon name="camera"  size={50} color={'gray'} />
             )}
             {imgUrl && 
-            <Image source={{uri : imgUrl}} style={styles.image} />}
+            <Image source={{uri : imgUrl}} alt={'Image picker'} style={styles.image} />}
         </Box>
 
         <Modal 
@@ -65,11 +69,54 @@ export default function ImageInputContainer({imgUrl, onChangeImage}) {
       >
         <ModalBackdrop />
         <ModalContent>
-          <Text>Modal</Text>
           <ModalHeader>
-            <ModalCloseButton></ModalCloseButton>
-          </ModalHeader>
-          <ModalBody />
+              <Heading size="lg">Select or take a new picture</Heading>
+              <ModalCloseButton>
+                <Icon 
+                  name='close' 
+                  size={24}
+                  color="#FA5057"/>
+                  
+              </ModalCloseButton>
+            </ModalHeader>
+          <ModalBody >
+            <HStack space='xl' justifyContent='center' marginVertical={16}>
+              <Button
+                
+                height="$full"
+                size="xl"
+                p="$1"
+                bg="lightgray"
+                borderColor="lightgray"
+
+                onPress={()=>handleCamera()}
+              >
+                  <ButtonIcon as={FontAwesome6Icon} name="camera" color="black" size={80} >
+                </ButtonIcon>
+              </Button>
+              <Button
+                
+                height="$full"
+                size="xl"
+                p="$3.5"
+                bg="lightgray"
+                borderColor="lightgray"
+                onPress={()=>handleGallery()}
+
+              >
+                  <ButtonIcon as={FontAwesome6Icon} name="file-image" color="black" size={80} >
+                </ButtonIcon>
+              </Button>
+                {/* <Icon 
+                  name='camera' 
+                  size={120}
+                  color="gray"/>
+                <Icon 
+                  name='file-image' 
+                  size={120}
+                  color="gray"/> */}
+            </HStack>
+          </ModalBody>
           <ModalFooter />
         </ModalContent>
       </Modal>
@@ -84,8 +131,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         borderRadius:15,
-        height:100,
-        width:100,
+        height:180,
+        width:180,
         backgroundColor:'lightgray',
         overflow:'hidden'
 
