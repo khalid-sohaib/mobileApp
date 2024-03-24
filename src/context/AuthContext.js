@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   const toggleLogin = () => {

@@ -1,70 +1,93 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/Home';
-import { Text, View } from '@gluestack-ui/themed';
-import { Button } from 'react-native';
-import Login from '../screens/Login';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "../screens/Home";
+
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import { Box } from '@gluestack-ui/themed';
-import AddScreen from '../screens/AddScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import MyDrawer from './MyDrawer';
-import HomeContainer from '../containers/HomeContainer';
+import Icon from "react-native-vector-icons/MaterialIcons";
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
+import { Box } from "@gluestack-ui/themed";
+import AddScreen from "../screens/AddScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const Tab = createBottomTabNavigator();
 
-
-export default function MyTabs({navigation}) {
+export default function MyTabs({ navigation }) {
   return (
-    <Tab.Navigator 
+    <Tab.Navigator
       screenOptions={{
         headerStyle: {
-          // backgroundColor: '#F56E13',  
+          // backgroundColor: '#F56E13',
         },
-        tabBarStyle:{
-          height:60,
+        tabBarStyle: {
+          height: 60,
           // borderTopLeftRadius:40,
           // borderTopRightRadius:40,
-          position:'absolute',
-          backgroundColor:'#fff',
+          position: "absolute",
+          backgroundColor: "#fff",
           // padding: 20,
         },
         // tabBarLabelPosition:'beside-icon',
-        tabBarLabelStyle:{display:'none'},
-        headerShown:false
-      }}>
-      
-      <Tab.Screen name="HomeScreen" component={Home} options={{
+        tabBarLabelStyle: { display: "none" },
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen
+        name="HomeScreen"
+        component={Home}
+        options={{
           // tabBarLabel: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <Icon name="home" size={30} color={focused ? '#FA5057' : color } />
+            <Icon name="home" size={30} color={focused ? "#FA5057" : color} />
           ),
-        
         }}
       />
-      <Tab.Screen name="AddNew" component={AddScreen} options={{
-        
-
+      <Tab.Screen
+        name="AddNew"
+        component={AddScreen}
+        options={{
           tabBarIcon: ({ color }) => (
-            <Box style={{backgroundColor:'#fff', padding:4, borderRadius:100, bottom:10, position:'absolute' }}>
-              <Box style={{backgroundColor:'#FA5057', padding:16, borderRadius:100}}>
-                <Box style={{backgroundColor:'#fff', padding:2, borderRadius:100}}>
-                  <FontAwesome6 name="plus" color={'#FA5057'} size={24}  />
+            <Box
+              style={{
+                backgroundColor: "#fff",
+                padding: 4,
+                borderRadius: 100,
+                bottom: 10,
+                position: "absolute",
+              }}
+            >
+              <Box
+                style={{
+                  backgroundColor: "#FA5057",
+                  padding: 16,
+                  borderRadius: 100,
+                }}
+              >
+                <Box
+                  style={{
+                    backgroundColor: "#fff",
+                    padding: 2,
+                    borderRadius: 100,
+                  }}
+                >
+                  <FontAwesome6 name="plus" color={"#FA5057"} size={24} />
                 </Box>
               </Box>
             </Box>
           ),
-        
         }}
       />
-     
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{
+
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
           tabBarIcon: ({ color, focused }) => (
-            <FontAwesome6 name="user" color={focused ? '#FA5057' : color } size={26} />
+            <FontAwesome6
+              name="user"
+              color={focused ? "#FA5057" : color}
+              size={26}
+            />
           ),
-        
         }}
       />
     </Tab.Navigator>

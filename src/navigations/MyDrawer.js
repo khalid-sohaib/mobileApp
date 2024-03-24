@@ -8,16 +8,17 @@ import { ToastAndroid } from "react-native";
 import About from "../screens/About";
 import ScanScreen from "../screens/ScanScreen";
 import CustomDrawerContent from "./CustomDrawerContent";
+import useLogout from "../hooks/useLogout";
 
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer({ navigation }) {
-  const { toggleLogin } = React.useContext(AuthContext);
 
-  const Logout = () => {
-    toggleLogin();
-    ToastAndroid.show("Logged out successfully", ToastAndroid.SHORT);
-  };
+  const logout = useLogout();
+
+  // const Logout = () => {
+  //   ToastAndroid.show("Logged out successfully", ToastAndroid.SHORT);
+  // };
 
   return (
     <Drawer.Navigator
@@ -44,7 +45,7 @@ export default function MyDrawer({ navigation }) {
             color="#FA5057"
             style={{ marginRight: 16 }}
             // onPress={() => navigation.navigate("Login")}
-            onPress={() => Logout()}
+            onPress={ logout}
           />
         ),
       }}

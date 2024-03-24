@@ -49,5 +49,6 @@ com.firstapp-packaged_res-47 C:\developer\Mobile\mobileApp\node_modules\react-na
 com.firstapp-packaged_res-48 C:\developer\Mobile\mobileApp\node_modules\react-native-reanimated\android\build\intermediates\packaged_res\debug
 com.firstapp-packaged_res-49 C:\developer\Mobile\mobileApp\node_modules\react-native-safe-area-context\android\build\intermediates\packaged_res\debug
 com.firstapp-packaged_res-50 C:\developer\Mobile\mobileApp\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
-com.firstapp-packaged_res-51 C:\developer\Mobile\mobileApp\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
-com.firstapp-packaged_res-52 C:\developer\Mobile\mobileApp\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-51 C:\developer\Mobile\mobileApp\node_modules\react-native-splash-screen\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-52 C:\developer\Mobile\mobileApp\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
+com.firstapp-packaged_res-53 C:\developer\Mobile\mobileApp\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug

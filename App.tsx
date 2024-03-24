@@ -10,12 +10,21 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { FilterProvider } from './src/context/FilterContext';
 import { AuthProvider } from './src/context/AuthContext';
+import SplashScreen from 'react-native-splash-screen';
+import { useEffect } from 'react';
+import { Platform } from 'react-native';
 
 const queryClient = new QueryClient();
 
 // const Stack = createNativeStackNavigator();
 // const Tab = createBottomTabNavigator();
 export default function App() {
+  // useEffect(() => {
+  //   if(Platform.OS === 'android')
+  //   SplashScreen.hide();
+    
+  // }, [])
+  
   return (
     <AuthProvider>
       <FilterProvider>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, ModalBackdrop, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalCloseButton } from "@gluestack-ui/themed";
+import { Modal, ModalBackdrop, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalCloseButton, ScrollView } from "@gluestack-ui/themed";
 import { Heading, Text, Image, Box, HStack, VStack, Button, ButtonText } from "@gluestack-ui/themed";
 import AppButton from "./AppButton";
 
@@ -16,14 +16,14 @@ export default function ProductDetailModal({ showModal, setShowModal, imgUrl, ca
         </ModalHeader>
         <ModalBody>
           <Image mb="$4" h={240} width="$full" overflow="hidden" resizeMode="contain" borderTopLeftRadius="$md" borderTopRightRadius="$md" source={{ uri: imgUrl }} alt="image-label" />
-          <Box px="$4" pb="$4">
+          <Box px="$4" >
                 <Text fontSize="$sm" color="$textLight700" mb="$2">{category}</Text>
                 <Heading size="md" mb="$2">{title}</Heading>
                 <Heading size="md" color="#47C6BE">${price}</Heading>
             <HStack justifyContent="space-between">
-              <VStack>
+              <ScrollView height={100}>
                 <Text fontSize="$sm" color="$textLight700" mb="$2">{description}</Text>
-              </VStack>
+              </ScrollView>
             </HStack>
           </Box>
         </ModalBody>

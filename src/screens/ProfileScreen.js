@@ -4,24 +4,25 @@ import { Box, ChevronsRightIcon, Image, Text } from "@gluestack-ui/themed";
 import { HStack } from "@gluestack-ui/themed";
 import Icon from "react-native-vector-icons/FontAwesome6";
 import AuthContext from "../context/AuthContext";
+import useLogout from "../hooks/useLogout";
 
 export default function ProfileScreen({ navigation }) {
   const imgUrl = require('../assests/profile.webp');
+  const logout = useLogout();
+  // const {toggleLogin} = useContext(AuthContext);
 
-  const {toggleLogin} = useContext(AuthContext);
-
-  const handleLogout = ()=>{
-    Alert.alert("Logout", "Are you sure you want to log-out", 
-    [
-      {
-        text :'Yes',
-        onPress : toggleLogin
-      },
-      {
-        text :'No',
-      }
-    ])
-  }
+  // const handleLogout = ()=>{
+  //   Alert.alert("Logout", "Are you sure you want to log-out", 
+  //   [
+  //     {
+  //       text :'Yes',
+  //       onPress : toggleLogin
+  //     },
+  //     {
+  //       text :'No',
+  //     }
+  //   ])
+  // }
 
   return (
     <View style={{ flex: 1, marginTop:60 }}>
@@ -90,7 +91,7 @@ export default function ProfileScreen({ navigation }) {
         </HStack>
       </TouchableOpacity>
       
-      <TouchableOpacity onPress={handleLogout}>
+      <TouchableOpacity onPress={logout}>
         <HStack backgroundColor="#fff" justifyContent="space-between" alignItems="center" space={"lg"} p={12} marginVertical={32}>
           <Text style={styles.title} p={16}>Log out</Text>
           <Box>

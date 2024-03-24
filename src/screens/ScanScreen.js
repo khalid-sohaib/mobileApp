@@ -9,6 +9,7 @@ import {
 import QRCodeScanner from "react-native-qrcode-scanner";
 import { RNCamera } from "react-native-camera";
 import { HStack, VStack } from "@gluestack-ui/themed";
+import AppButton from "../components/AppButton";
 
 const ScanScreen = () => {
   const [reactivate, setReactivate] = useState(true);
@@ -62,16 +63,20 @@ const ScanScreen = () => {
       bottomContent={
         <VStack alignItems="center" paddingTop={50}>
           <HStack>
+            
             <TouchableOpacity style={styles.buttonTouchable} onPress={handleInfo}>
               <Text style={styles.buttonText}>Show Data</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttonTouchable} onPress={handleRedirect}>
               <Text style={styles.buttonText}>Go to address</Text>
             </TouchableOpacity>
+
           </HStack>
+
           <TouchableOpacity style={styles.buttonTouchable} onPress={()=> setData(null)}>
-          <Text style={styles.buttonText}>Reset</Text>
-        </TouchableOpacity>
+            <Text style={styles.buttonText}>Reset</Text>
+          </TouchableOpacity>
+          
         </VStack>
       }
     />

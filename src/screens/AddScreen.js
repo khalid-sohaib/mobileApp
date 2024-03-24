@@ -8,6 +8,9 @@ import FormField from "../components/formField/FormField";
 import GetLocation from "react-native-get-location";
 import AppButton from "../components/AppButton";
 import * as Yup from 'yup';
+import requestLocationPermission from "../utils/permissions";
+import { Text } from "@gluestack-ui/themed";
+
 
 const validationSchema = Yup.object().shape({
   imgUrl: Yup.string().required('Image URL is required'),
@@ -19,20 +22,32 @@ const validationSchema = Yup.object().shape({
 export default function AddScreen({ navigation }) {
   const [SelectedImgUrl, setSelectedImageUrl] = useState();
   const [currentLocation, setCurrentLocation] = useState();
+  const [loading, setLoading] = useState();
 
-  const handleLocation = () => {
-    GetLocation.getCurrentPosition({
-      enableHighAccuracy: true,
-      timeout: 60000,
-    })
-      .then((location) => {
-        console.log(location);
-        setCurrentLocation(location);
+  const handleLocation = async (setFieldValue) => {
+    
+    const permissionGranted = await requestLocationPermission(); 
+    setCurrentLocation(null);
+    if (permissionGranted) {
+      setLoading(true);
+      GetLocation.getCurrentPosition({
+        enableHighAccuracy: true,
+        timeout: 6000,
+        
       })
-      .catch((error) => {
-        const { code, message } = error;
-        console.warn(code, message);
-      });
+        .then((location) => {
+          console.log('locationnnn',location);
+          setLoading(false);
+          setCurrentLocation(location);
+          setFieldValue("location", `${location.latitude}, ${location.longitude}`);
+        })
+        .catch((error) => {
+          const { code, message } = error;
+          console.warn(code, message);
+        });
+    } else {
+      console.log('Location permission not granted');
+    }
   };
 
   return (
@@ -49,9 +64,15 @@ export default function AddScreen({ navigation }) {
             description: "",
             category: "",
             price: "",
+            location:"",
           }}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.warn(values)}
+          onSubmit={(values, { resetForm }) => {
+            console.warn(values);
+            resetForm();
+            setSelectedImageUrl(null);
+            setCurrentLocation(null); 
+          }}
         >
           {({ handleSubmit, handleChange, setFieldValue, errors, values }) => (
             <>
@@ -86,9 +107,12 @@ export default function AddScreen({ navigation }) {
                   keyboardType={"numeric"}
                   errors={errors.price}
                 />
+                {loading && <Text>Loading...</Text>}
+               {currentLocation && <Text>Axis :{currentLocation?.longitude} - { currentLocation?.latitude}</Text> }
+                <AppButton onPress={() => handleLocation(setFieldValue)} text={"Get Location"} />
 
-                <AppButton onPress={handleLocation} text={"Get Location"} />
                 <AppButton onPress={handleSubmit} text={"Add"} />
+
               </VStack>
             </>
           )}
