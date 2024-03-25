@@ -9,12 +9,14 @@ import ProductDetailModal from './ProductDetailModal';
 export default function ProductCard({ imgUrl, title, price, category, description}) {
     const [showModal, setShowModal] = useState(false);
     const ref = React.useRef(null);
-
+    // if (!imgUrl) {
+    //     return imgUrl; 
+    // }
     return (
-        <View>
+        <Box>
             <TouchableWithoutFeedback onPress={() => setShowModal(true)}>
                 <Card borderRadius="$lg" mb="$3" mt={3} p='$0'>
-                    <Image
+                    {imgUrl && <Image
                         mb="$4"
                         h={240}
                         width="$full"
@@ -25,7 +27,7 @@ export default function ProductCard({ imgUrl, title, price, category, descriptio
                         
                         source={{ uri: imgUrl }}
                         alt={'image-label'}
-                    />
+                    />}
                     <Box px={'$4'} pb={'$4'}>
                         <Text
                             fontSize="$sm"
@@ -140,6 +142,6 @@ export default function ProductCard({ imgUrl, title, price, category, descriptio
                     </ModalFooter>
                 </ModalContent>
             </Modal> */}
-        </View>
+        </Box>
     );
 }

@@ -7,9 +7,9 @@ export default function ProductDetailModal({ showModal, setShowModal, imgUrl, ca
   const handleCloseModal = () => setShowModal(false);
 
   return (
-    <Modal isOpen={showModal} onClose={handleCloseModal}>
+    <Modal isOpen={showModal} onClose={handleCloseModal} p={16} >
       <ModalBackdrop />
-      <ModalContent>
+      <ModalContent width={'100%'}  borderColor="#47C6BE" borderWidth={2}>
         <ModalHeader>
           <Heading size="lg">Product Details</Heading>
           <ModalCloseButton onPress={handleCloseModal} />

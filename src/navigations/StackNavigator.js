@@ -8,6 +8,8 @@ import MyDrawer from "./MyDrawer";
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import MyTabs from "./Mytabs";
+import Listings from "../screens/Listings";
+import ProductDetail from "../screens/ProductDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +31,16 @@ export default function StackNavigator() {
           <Stack.Screen
             name="Drawer"
             component={MyDrawer}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Listings"
+            component={Listings}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="ProductDetail"
+            component={ProductDetail}
             options={{ headerShown: false }}
           />
           

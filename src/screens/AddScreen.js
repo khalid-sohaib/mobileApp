@@ -10,6 +10,7 @@ import AppButton from "../components/AppButton";
 import * as Yup from 'yup';
 import requestLocationPermission from "../utils/permissions";
 import { Text } from "@gluestack-ui/themed";
+import { useListings } from "../context/ListingsContext";
 
 
 const validationSchema = Yup.object().shape({
@@ -23,6 +24,7 @@ export default function AddScreen({ navigation }) {
   const [SelectedImgUrl, setSelectedImageUrl] = useState();
   const [currentLocation, setCurrentLocation] = useState();
   const [loading, setLoading] = useState();
+  // const [listing, setListing] = useState([]);
 
   const handleLocation = async (setFieldValue) => {
     
@@ -50,6 +52,15 @@ export default function AddScreen({ navigation }) {
     }
   };
 
+  //adding product
+  const { addProduct } = useListings();
+
+  const handleAdd = (values) => {
+    console.warn("Success",values);
+    
+    addProduct(values);
+  };
+  
   return (
     <KeyboardAwareScrollView
       style={styles.main}
@@ -68,7 +79,7 @@ export default function AddScreen({ navigation }) {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm }) => {
-            console.warn(values);
+            handleAdd(values);
             resetForm();
             setSelectedImageUrl(null);
             setCurrentLocation(null); 

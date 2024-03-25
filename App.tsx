@@ -13,6 +13,7 @@ import { AuthProvider } from './src/context/AuthContext';
 import SplashScreen from 'react-native-splash-screen';
 import { useEffect } from 'react';
 import { Platform } from 'react-native';
+import { ListingsProvided, ListingsProvider } from './src/context/ListingsContext';
 
 const queryClient = new QueryClient();
 
@@ -28,15 +29,16 @@ export default function App() {
   return (
     <AuthProvider>
       <FilterProvider>
-        <QueryClientProvider client={queryClient}>
-          <GluestackUIProvider config={config}>
-            <NavigationContainer>
-              <StackNavigator/>
-            </NavigationContainer>
-          </GluestackUIProvider>
-          {/* <ReactQueryDevtools /> */}
-        </QueryClientProvider>
-
+        <ListingsProvider>
+          <QueryClientProvider client={queryClient}>
+            <GluestackUIProvider config={config}>
+              <NavigationContainer>
+                <StackNavigator/>
+              </NavigationContainer>
+            </GluestackUIProvider>
+            {/* <ReactQueryDevtools /> */}
+          </QueryClientProvider>
+        </ListingsProvider>
       </FilterProvider>
     </AuthProvider>
 

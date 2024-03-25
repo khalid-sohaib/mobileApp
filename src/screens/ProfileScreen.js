@@ -52,7 +52,7 @@ export default function ProfileScreen({ navigation }) {
       </TouchableOpacity>
 
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('Listings')}>
         <HStack backgroundColor="#fff" justifyContent="space-between" alignItems="center" space={"lg"} p={12} marginVertical={4}>
 
           <HStack alignItems="center" space="lg" >

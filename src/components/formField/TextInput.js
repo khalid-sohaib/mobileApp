@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Input, InputField } from '@gluestack-ui/themed'
 
 export default function MyTextInput({type, placeholder, secureTextEntry, keyboardType, onChangeText}) {
-    const [name, setName] = useState('');
   return (
     <>
     
