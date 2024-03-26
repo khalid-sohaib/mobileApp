@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 import { View, TouchableWithoutFeedback } from "react-native";
 import {
-  Modal,
-  ModalBackdrop,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  ModalCloseButton,
-} from "@gluestack-ui/themed";
-import {
   Card,
   Image,
   Box,
@@ -22,6 +13,7 @@ import {
 } from "@gluestack-ui/themed";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import ProductDetailModal from "./ProductDetailModal";
+import Colors from "../theme/Colors";
 
 export default function ListingsCard({
   imgUrl,
@@ -31,10 +23,9 @@ export default function ListingsCard({
   description,
   navigation,
 }) {
-  const [showModal, setShowModal] = useState(false);
-  const ref = React.useRef(null);
+  
   return (
-    <Box>
+    <Box flex={1}>
       <TouchableWithoutFeedback
         onPress={() =>
           navigation.navigate("ProductDetail", {
@@ -46,16 +37,17 @@ export default function ListingsCard({
           })
         }
       >
-        <Card borderRadius="$lg" mb="$3" mt={3} p="$0">
+        <Card borderRadius="$lg" mb="$4"  p="$0">
           {imgUrl && (
             <Image
               mb="$4"
-              h={240}
+              aspectRatio={16 / 6}
+              h={200}
               width="$full"
               overflow="hidden"
-              resizeMode="Fill"
-              borderTopLeftRadius="$md"
-              borderTopRightRadius="$md"
+              resizeMode="cover"
+              borderTopLeftRadius="$xl"
+              borderTopRightRadius="$xl"
               source={{ uri: imgUrl }}
               alt={"image-label"}
             />
@@ -82,7 +74,7 @@ export default function ListingsCard({
                 <Heading size="md" fontFamily="$heading" mb="$2">
                   {title.split(" ").slice(0, 3).join(" ")}
                 </Heading>
-                <Heading size="md" fontFamily="$body" color="#47C6BE">
+                <Heading size="md" fontFamily="$body" color={Colors.secondary}>
                   $ {price}
                 </Heading>
               </VStack>

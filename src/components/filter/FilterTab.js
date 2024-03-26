@@ -4,6 +4,7 @@ import { ScrollView } from "@gluestack-ui/themed";
 import React, {  useState } from "react";
 import { TouchableWithoutFeedback } from "react-native";
 import { useFilter } from "../../context/FilterContext";
+import Colors from "../../theme/Colors";
 
 export default function FilterTab({ items }) {
   const [focusedIndex, setFocusedIndex] = useState(null);
@@ -26,7 +27,7 @@ export default function FilterTab({ items }) {
           key={index}
           style={{ 
             borderRadius: 50, 
-            backgroundColor: focusedIndex === index ? "#46C6BE" : "#fff",
+            backgroundColor: focusedIndex === index ? Colors.secondary : Colors.white,
             marginLeft: 8,
             
            }}
@@ -37,7 +38,7 @@ export default function FilterTab({ items }) {
             fontFamily="$heading"
             fontWeight="$normal"
             lineHeight="$sm"
-            style={{ color: "black", paddingHorizontal: 12, padding: 8 }}
+            style={{ color: Colors.black, paddingHorizontal: 12, padding: 8 }}
           >
             {e}
           </Text>

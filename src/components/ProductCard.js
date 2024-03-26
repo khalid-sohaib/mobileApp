@@ -4,6 +4,7 @@ import { Modal, ModalBackdrop, ModalContent, ModalHeader, ModalBody, ModalFooter
 import { Card, Image, Box, Heading, Text, HStack, VStack, Button, ButtonText } from '@gluestack-ui/themed';
 import Icon from "react-native-vector-icons/MaterialIcons";
 import ProductDetailModal from './ProductDetailModal';
+import Colors from '../theme/Colors';
 
 
 export default function ProductCard({ imgUrl, title, price, category, description}) {
@@ -50,7 +51,7 @@ export default function ProductCard({ imgUrl, title, price, category, descriptio
                                 <Heading size="md" fontFamily="$heading" mb="$2">
                                     {title.split(' ').slice(0,3).join(' ')}
                                 </Heading>
-                                <Heading size="md" fontFamily="$body" color='#47C6BE'>
+                                <Heading size="md" fontFamily="$body" color={Colors.secondary}>
                                     $ {price}
                                 </Heading>
                             </VStack>

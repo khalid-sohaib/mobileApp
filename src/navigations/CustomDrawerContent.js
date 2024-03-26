@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { DrawerContentScrollView } from '@react-navigation/drawer';
+import Colors from '../theme/Colors';
 
 export default function CustomDrawerContent({ navigation, logout })  {
     return (
@@ -27,7 +28,7 @@ export default function CustomDrawerContent({ navigation, logout })  {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#F56E13",
+      backgroundColor: Colors.primary,
     },
     drawerItem: {
       padding: 10,

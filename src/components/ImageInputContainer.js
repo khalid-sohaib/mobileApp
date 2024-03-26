@@ -8,6 +8,7 @@ import { ModalBody } from '@gluestack-ui/themed';
 import { HStack } from '@gluestack-ui/themed';
 import { Button } from '@gluestack-ui/themed';
 import FontAwesome6Icon from 'react-native-vector-icons/FontAwesome6';
+import Colors from '../theme/Colors';
 
 
 export default function ImageInputContainer({imgUrl, onChangeImage}) {
@@ -70,39 +71,36 @@ export default function ImageInputContainer({imgUrl, onChangeImage}) {
         <ModalBackdrop />
         <ModalContent>
           <ModalHeader>
-              <Heading size="lg">Select or take a new picture</Heading>
+              <Heading size="md">Select or take a new picture</Heading>
               <ModalCloseButton>
                 <Icon 
                   name='close' 
                   size={24}
-                  color="#FA5057"/>
+                  color={Colors.primary}/>
                   
               </ModalCloseButton>
             </ModalHeader>
           <ModalBody >
-            <HStack space='xl' justifyContent='center' marginVertical={16}>
+            <HStack space='md' justifyContent='center' marginVertical={16}>
               <Button
-                
                 height="$full"
                 size="xl"
                 p="$1"
-                bg="lightgray"
-                borderColor="lightgray"
-
+                bg={Colors.background}
+                borderColor={Colors.primary}
                 onPress={()=>handleCamera()}
               >
                   <ButtonIcon as={FontAwesome6Icon} name="camera" color="black" size={80} >
                 </ButtonIcon>
               </Button>
+
               <Button
-                
                 height="$full"
                 size="xl"
-                p="$3.5"
-                bg="lightgray"
-                borderColor="lightgray"
+                p="$1"
+                bg={Colors.background}
+                borderColor={Colors.primary}
                 onPress={()=>handleGallery()}
-
               >
                   <ButtonIcon as={FontAwesome6Icon} name="file-image" color="black" size={80} >
                 </ButtonIcon>
@@ -133,7 +131,7 @@ const styles = StyleSheet.create({
         borderRadius:15,
         height:180,
         width:180,
-        backgroundColor:'lightgray',
+        backgroundColor:Colors.lightGray,
         overflow:'hidden'
 
     },

@@ -8,6 +8,7 @@ import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 import { Box } from "@gluestack-ui/themed";
 import AddScreen from "../screens/AddScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import Colors from "../theme/Colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,10 +21,10 @@ export default function MyTabs({ navigation }) {
         },
         tabBarStyle: {
           height: 60,
-          // borderTopLeftRadius:40,
-          // borderTopRightRadius:40,
+          borderTopLeftRadius:40,
+          borderTopRightRadius:40,
           position: "absolute",
-          backgroundColor: "#fff",
+          backgroundColor: Colors.white,
           // padding: 20,
         },
         // tabBarLabelPosition:'beside-icon',
@@ -37,7 +38,7 @@ export default function MyTabs({ navigation }) {
         options={{
           // tabBarLabel: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <Icon name="home" size={30} color={focused ? "#FA5057" : color} />
+            <Icon name="home" size={36} color={focused ? Colors.primary : color} />
           ),
         }}
       />
@@ -48,7 +49,7 @@ export default function MyTabs({ navigation }) {
           tabBarIcon: ({ color }) => (
             <Box
               style={{
-                backgroundColor: "#fff",
+                backgroundColor: Colors.white,
                 padding: 4,
                 borderRadius: 100,
                 bottom: 10,
@@ -57,19 +58,19 @@ export default function MyTabs({ navigation }) {
             >
               <Box
                 style={{
-                  backgroundColor: "#FA5057",
+                  backgroundColor:  Colors.primary,
                   padding: 16,
                   borderRadius: 100,
                 }}
               >
                 <Box
                   style={{
-                    backgroundColor: "#fff",
+                    backgroundColor: Colors.white,
                     padding: 2,
                     borderRadius: 100,
                   }}
                 >
-                  <FontAwesome6 name="plus" color={"#FA5057"} size={24} />
+                  <FontAwesome6 name="plus" color={Colors.primary} size={26} />
                 </Box>
               </Box>
             </Box>
@@ -83,8 +84,8 @@ export default function MyTabs({ navigation }) {
         options={{
           tabBarIcon: ({ color, focused }) => (
             <FontAwesome6
-              name="user"
-              color={focused ? "#FA5057" : color}
+              name="user-large"
+              color={focused ? Colors.primary : color}
               size={26}
             />
           ),

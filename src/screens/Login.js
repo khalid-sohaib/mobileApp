@@ -7,6 +7,8 @@ import FormField from "../components/formField/FormField";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import AuthContext from "../context/AuthContext";
+import AppButton from "../components/AppButton";
+import Colors from "../theme/Colors";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -63,20 +65,15 @@ export default function Login({ navigation }) {
               />
               {/* <Text style={{color:'red'}}>{errors.password}</Text> */}
 
-              <Button
-                variant="solid"
-                size="xl"
-                style={styles.button}
-                onPress={handleSubmit}
-              >
-                <ButtonText>Login</ButtonText>
-              </Button>
+              <AppButton text={'Login'} onPress={handleSubmit}  />
+              
+                
               <Button
                 variant="link"
                 size="md"
                 onPress={() => navigation.navigate("Register")}
               >
-                <ButtonText>Create a new account</ButtonText>
+                <ButtonText color={Colors.gray}>Create a new account</ButtonText>
               </Button>
             </VStack>
           </>

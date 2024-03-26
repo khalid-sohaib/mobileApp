@@ -15,6 +15,7 @@ import { ButtonText } from "@gluestack-ui/themed";
 import FormField from "../components/formField/FormField";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import AppButton from "../components/AppButton";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -84,14 +85,8 @@ export default function Register({ navigation }) {
                 <CheckboxLabel>I accept the terms & conditions</CheckboxLabel>
               </Checkbox>
 
-              <Button
-                variant="solid"
-                size="xl"
-                style={styles.button}
-                onPress={handleSubmit}
-              >
-                <ButtonText>Register</ButtonText>
-              </Button>
+              <AppButton text={'Register'} onPress={handleSubmit}/>
+              
             </VStack>
           </>
         )}

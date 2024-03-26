@@ -7,9 +7,9 @@ import { StyleSheet } from "react-native";
 import MyDrawer from "./MyDrawer";
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
-import MyTabs from "./Mytabs";
 import Listings from "../screens/Listings";
 import ProductDetail from "../screens/ProductDetail";
+import Colors from "../theme/Colors";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +36,10 @@ export default function StackNavigator() {
           <Stack.Screen
             name="Listings"
             component={Listings}
-            options={{ headerShown: true }}
+            options={{ 
+              headerShown: true,
+              headerTitleAlign: 'center',
+              headerTintColor: Colors.primary }}
           />
           <Stack.Screen
             name="ProductDetail"

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Button, ButtonText } from '@gluestack-ui/themed'
+import Colors from '../theme/Colors'
 
 export default function AppButton({onPress, text, color}) {
   return (
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     button: {
         // color:'#323A52',
         
-        backgroundColor: "#FC5C65",
+        backgroundColor: Colors.primary,
         borderRadius: 50,
         width: "100%",
       },

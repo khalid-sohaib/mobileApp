@@ -3,6 +3,7 @@ import React from 'react'
 import { Box, ButtonText, Heading, Image, ImageBackground, ScrollView, Text } from '@gluestack-ui/themed'
 import { Button } from '@gluestack-ui/themed'
 import AppButton from '../components/AppButton'
+import Colors from '../theme/Colors'
 
 export default function About({navigation}) {
   return (
@@ -50,12 +51,11 @@ const styles = StyleSheet.create({
     alignItems:'flex-start',
     justifyContent:'center'
   },
-  title: {
+ title : {
     fontSize: 34,
     fontWeight: 'bold',
-    color:'#f45962',
-
-  },
+    color:Colors.primary,
+ },
   heading : {
     marginBottom: 10, padding:25, backgroundColor: 'rgba(245, 222, 179, 0.7)', borderRadius:20
   },
@@ -67,15 +67,15 @@ const styles = StyleSheet.create({
   version: {
     fontSize: 14,
     marginBottom: 5,
-    color:'#4ECDC4'
+    color:Colors.secondary,
   },
   credits: {
     fontSize: 16,
     fontStyle: 'italic',
-    color:'#FC5C65'
+    color:Colors.primary
   },
   Button: {
-    backgroundColor:'#FC5C65',
+    backgroundColor: Colors.primary,
     borderRadius:50,
   }
 })

@@ -9,6 +9,7 @@ import About from "../screens/About";
 import ScanScreen from "../screens/ScanScreen";
 import CustomDrawerContent from "./CustomDrawerContent";
 import useLogout from "../hooks/useLogout";
+import Colors from "../theme/Colors";
 
 const Drawer = createDrawerNavigator();
 
@@ -33,7 +34,7 @@ export default function MyDrawer({ navigation }) {
         },
         headerTitleAlign: "center",
         headerTransparent: true,
-        headerTintColor: "#FD5059",
+        headerTintColor: Colors.primary,
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -42,7 +43,7 @@ export default function MyDrawer({ navigation }) {
           <Icon
             name={"logout"}
             size={24}
-            color="#FA5057"
+            color={Colors.primary}
             style={{ marginRight: 16 }}
             // onPress={() => navigation.navigate("Login")}
             onPress={ logout}

@@ -9,7 +9,7 @@ export default function CustomCard() {
     <Box marginVertical={'$2'}>
         <Card size="sm" variant="elevated" w="$40"  mr="$3">
             <Heading mb="$1" size="md">
-            Quick Start
+              Quick Start
             </Heading>
             <Text size="sm">Start building your next project in minutes</Text>
         </Card>
