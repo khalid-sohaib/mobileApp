@@ -3,18 +3,14 @@ import * as React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import MyTabs from "./Mytabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import AuthContext from "../context/AuthContext";
-import { ToastAndroid } from "react-native";
 import About from "../screens/About";
 import ScanScreen from "../screens/ScanScreen";
-import CustomDrawerContent from "./CustomDrawerContent";
 import useLogout from "../hooks/useLogout";
 import Colors from "../theme/Colors";
 
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer({ navigation }) {
-
   const logout = useLogout();
 
   // const Logout = () => {
@@ -46,7 +42,7 @@ export default function MyDrawer({ navigation }) {
             color={Colors.primary}
             style={{ marginRight: 16 }}
             // onPress={() => navigation.navigate("Login")}
-            onPress={ logout}
+            onPress={logout}
           />
         ),
       }}

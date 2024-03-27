@@ -23,7 +23,7 @@ export default function FormField({
   errors,
   secureTextEntry,
   keyboardType,
-  onChangeText
+  onChangeText,
 }) {
   return (
     <FormControl style={styles.form} isRequired={isRequired}>

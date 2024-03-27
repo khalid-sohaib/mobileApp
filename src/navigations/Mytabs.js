@@ -3,9 +3,9 @@ import Home from "../screens/Home";
 
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Icon from "react-native-vector-icons/MaterialIcons";
-import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 import { Box } from "@gluestack-ui/themed";
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
+import Icon from "react-native-vector-icons/MaterialIcons";
 import AddScreen from "../screens/AddScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import Colors from "../theme/Colors";
@@ -21,8 +21,8 @@ export default function MyTabs({ navigation }) {
         },
         tabBarStyle: {
           height: 60,
-          borderTopLeftRadius:40,
-          borderTopRightRadius:40,
+          borderTopLeftRadius: 40,
+          borderTopRightRadius: 40,
           position: "absolute",
           backgroundColor: Colors.white,
           // padding: 20,
@@ -38,7 +38,11 @@ export default function MyTabs({ navigation }) {
         options={{
           // tabBarLabel: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <Icon name="home" size={36} color={focused ? Colors.primary : color} />
+            <Icon
+              name="home"
+              size={36}
+              color={focused ? Colors.primary : color}
+            />
           ),
         }}
       />
@@ -58,7 +62,7 @@ export default function MyTabs({ navigation }) {
             >
               <Box
                 style={{
-                  backgroundColor:  Colors.primary,
+                  backgroundColor: Colors.primary,
                   padding: 16,
                   borderRadius: 100,
                 }}

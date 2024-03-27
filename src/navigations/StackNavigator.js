@@ -1,20 +1,18 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Home";
-import Login from "../screens/Login";
-import Register from "../screens/Register";
-import { ImageBackground } from "@gluestack-ui/themed";
+import { useContext } from "react";
 import { StyleSheet } from "react-native";
-import MyDrawer from "./MyDrawer";
-import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import Listings from "../screens/Listings";
+import Login from "../screens/Login";
 import ProductDetail from "../screens/ProductDetail";
+import Register from "../screens/Register";
 import Colors from "../theme/Colors";
+import MyDrawer from "./MyDrawer";
 
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
-  const {isLoggedIn} = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <Stack.Navigator
       initialRouteName="Drawer"
@@ -36,17 +34,17 @@ export default function StackNavigator() {
           <Stack.Screen
             name="Listings"
             component={Listings}
-            options={{ 
+            options={{
               headerShown: true,
-              headerTitleAlign: 'center',
-              headerTintColor: Colors.primary }}
+              headerTitleAlign: "center",
+              headerTintColor: Colors.primary,
+            }}
           />
           <Stack.Screen
             name="ProductDetail"
             component={ProductDetail}
             options={{ headerShown: false }}
           />
-          
         </>
       )}
     </Stack.Navigator>

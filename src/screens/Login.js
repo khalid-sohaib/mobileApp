@@ -20,15 +20,14 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Login({ navigation }) {
-  const {toggleLogin} =React.useContext(AuthContext);
+  const { toggleLogin } = React.useContext(AuthContext);
 
   const handleLogin = (values) => {
     // console.warn(values);
     toggleLogin();
     // navigation.navigate("Home");
 
-    ToastAndroid.show('Logged in successfully', ToastAndroid.SHORT);
-
+    ToastAndroid.show("Logged in successfully", ToastAndroid.SHORT);
   };
   const imgPath = "../assests/bgImage.jpg";
 
@@ -65,15 +64,16 @@ export default function Login({ navigation }) {
               />
               {/* <Text style={{color:'red'}}>{errors.password}</Text> */}
 
-              <AppButton text={'Login'} onPress={handleSubmit}  />
-              
-                
+              <AppButton text={"Login"} onPress={handleSubmit} />
+
               <Button
                 variant="link"
                 size="md"
                 onPress={() => navigation.navigate("Register")}
               >
-                <ButtonText color={Colors.gray}>Create a new account</ButtonText>
+                <ButtonText color={Colors.gray}>
+                  Create a new account
+                </ButtonText>
               </Button>
             </VStack>
           </>

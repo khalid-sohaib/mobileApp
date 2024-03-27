@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-import { View, TouchableWithoutFeedback } from "react-native";
 import {
-  Card,
-  Image,
   Box,
-  Heading,
-  Text,
+  Card,
   HStack,
+  Heading,
+  Image,
   VStack,
-  Button,
-  ButtonText,
 } from "@gluestack-ui/themed";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import ProductDetailModal from "./ProductDetailModal";
+import React from "react";
+import { TouchableWithoutFeedback } from "react-native";
 import Colors from "../theme/Colors";
 
 export default function ListingsCard({
@@ -23,7 +18,6 @@ export default function ListingsCard({
   description,
   navigation,
 }) {
-  
   return (
     <Box flex={1}>
       <TouchableWithoutFeedback
@@ -37,7 +31,7 @@ export default function ListingsCard({
           })
         }
       >
-        <Card borderRadius="$lg" mb="$4"  p="$0">
+        <Card borderRadius="$lg" mb="$4" p="$0">
           {imgUrl && (
             <Image
               mb="$4"
@@ -82,8 +76,6 @@ export default function ListingsCard({
           </Box>
         </Card>
       </TouchableWithoutFeedback>
-
-     
     </Box>
   );
 }

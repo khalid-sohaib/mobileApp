@@ -85,8 +85,7 @@ export default function Register({ navigation }) {
                 <CheckboxLabel>I accept the terms & conditions</CheckboxLabel>
               </Checkbox>
 
-              <AppButton text={'Register'} onPress={handleSubmit}/>
-              
+              <AppButton text={"Register"} onPress={handleSubmit} />
             </VStack>
           </>
         )}

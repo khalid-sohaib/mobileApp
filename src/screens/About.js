@@ -1,81 +1,102 @@
-import { StyleSheet } from 'react-native'
-import React from 'react'
-import { Box, ButtonText, Heading, Image, ImageBackground, ScrollView, Text } from '@gluestack-ui/themed'
-import { Button } from '@gluestack-ui/themed'
-import AppButton from '../components/AppButton'
-import Colors from '../theme/Colors'
+import { StyleSheet } from "react-native";
+import React from "react";
+import {
+  Box,
+  ButtonText,
+  Heading,
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+} from "@gluestack-ui/themed";
+import { Button } from "@gluestack-ui/themed";
+import AppButton from "../components/AppButton";
+import Colors from "../theme/Colors";
 
-export default function About({navigation}) {
+export default function About({ navigation }) {
   return (
     <>
-    <Box style={styles.main}>
+      <Box style={styles.main}>
         {/* <Image style={styles.image} source={require('../assests/bg3.jpg')} alt='about'/> */}
-        <ImageBackground style={[styles.image,{alignItems:'center', justifyContent:'flex-end', paddingBottom:40} ]} source={require('../assests/bg3.jpg')} alt='about'>
+        <ImageBackground
+          style={[
+            styles.image,
+            {
+              alignItems: "center",
+              justifyContent: "flex-end",
+              paddingBottom: 40,
+            },
+          ]}
+          source={require("../assests/bg3.jpg")}
+          alt="about"
+        >
           <Box style={styles.heading}>
             <Heading style={styles.title}>About Our App</Heading>
           </Box>
         </ImageBackground>
         <Box style={styles.container}>
-            <Text style={styles.description}>
-              Welcome to our app! This app helps you explore and add products.
-            </Text>
-            <Text style={styles.version}>Version: 1.0.0</Text>
-            <Text style={styles.credits}>Credits: gluestack ui, React Navigation, etc </Text>
-
+          <Text style={styles.description}>
+            Welcome to our app! This app helps you explore and add products.
+          </Text>
+          <Text style={styles.version}>Version: 1.0.0</Text>
+          <Text style={styles.credits}>
+            Credits: gluestack ui, React Navigation, etc{" "}
+          </Text>
         </Box>
-
-
-    </Box>
-        <Box padding={20} textAlign='center' justifyContent='center' > 
-         <AppButton onPress={() => navigation.goBack()} text={"Go back home"}/>
-        </Box>
+      </Box>
+      <Box padding={20} textAlign="center" justifyContent="center">
+        <AppButton onPress={() => navigation.goBack()} text={"Go back home"} />
+      </Box>
     </>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  main : {
-    flex: 1, 
-    marginTop:60,
-    marginBottom:20,
-    alignItems: "center", 
-    justifyContent: "center"
+  main: {
+    flex: 1,
+    marginTop: 60,
+    marginBottom: 20,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  image : {
-    flex : 0.6,
-    width:'100%'
+  image: {
+    flex: 0.6,
+    width: "100%",
   },
-  container : {
-    flex : 0.4,
-    padding:20,
-    alignItems:'flex-start',
-    justifyContent:'center'
+  container: {
+    flex: 0.4,
+    padding: 20,
+    alignItems: "flex-start",
+    justifyContent: "center",
   },
- title : {
+  title: {
     fontSize: 34,
-    fontWeight: 'bold',
-    color:Colors.primary,
- },
-  heading : {
-    marginBottom: 10, padding:25, backgroundColor: 'rgba(245, 222, 179, 0.7)', borderRadius:20
+    fontWeight: "bold",
+    color: Colors.primary,
+  },
+  heading: {
+    marginBottom: 10,
+    padding: 25,
+    backgroundColor: "rgba(245, 222, 179, 0.7)",
+    borderRadius: 20,
   },
   description: {
     fontSize: 20,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 60,
   },
   version: {
     fontSize: 14,
     marginBottom: 5,
-    color:Colors.secondary,
+    color: Colors.secondary,
   },
   credits: {
     fontSize: 16,
-    fontStyle: 'italic',
-    color:Colors.primary
+    fontStyle: "italic",
+    color: Colors.primary,
   },
   Button: {
     backgroundColor: Colors.primary,
-    borderRadius:50,
-  }
-})
+    borderRadius: 50,
+  },
+});
